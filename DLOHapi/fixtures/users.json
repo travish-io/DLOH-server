@@ -3,16 +3,16 @@
     "model": "auth.user",
     "pk": 1,
     "fields": {
-      "password": null,
+      "password": "pbkdf2_sha256$216000$qMRH8szID7Z8$Vljya2V3XfruOHuvx1hGz9ZyKg4bxbw7rc2WO0gTR7I=",
       "last_login": null,
       "is_superuser": false,
-      "username": null,
-      "first_name": null,
-      "last_name": null,
-      "email": null,
+      "username": "travish",
+      "first_name": "Travis",
+      "last_name": "Hall",
+      "email": "me@me.com",
       "is_staff": false,
       "is_active": true,
-      "date_joined": null,
+      "date_joined": "2020-08-28T14:51:39.989Z",
       "groups": [],
       "user_permissions": []
     }
