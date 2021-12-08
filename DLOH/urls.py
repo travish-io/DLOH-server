@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from DLOHapi.views import home, oauth
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('oauth2', home, name='oauth2'),
+    path('oauth2/login', oauth.bungie_login, name='oauth2_login')
 ]
