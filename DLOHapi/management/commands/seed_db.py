@@ -18,7 +18,7 @@ class Command(BaseCommand):
         for item in json:
             display_properties = json[item]['displayProperties']
             inventory = json[item]['inventory']
-            if inventory.get('tierTypeName', "") in ["", 'Legendary', 'Exotic'] and display_properties['hasIcon'] and inventory.get('bucketTypeHash') in [1498876634, 2465295065, 953998645, 3448274439, 3551918588, 14239492, 20886954, 158578786] and inventory['isInstanceItem'] and inventory.get('itemTypeAndTierDisplayName') not in ['Legendary Helmet', 'Legendary Gauntlets', 'Legendary Chest Armor', 'Legendary Leg Armor']:
+            if inventory.get('tierTypeName', "") in ["", 'Legendary', 'Exotic'] and display_properties['hasIcon'] and inventory.get('bucketTypeHash') in [1498876634, 2465295065, 953998645, 3448274439, 3551918588, 14239492, 20886954, 158578786] and inventory['isInstanceItem']:
                 new_destiny_item = DestinyInventoryItems.objects.create(
                     item_hash=item,
                     description=display_properties['description'],

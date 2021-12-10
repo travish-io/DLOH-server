@@ -18,7 +18,7 @@ from django.conf.urls import include
 from django.urls import path
 from DLOHapi.views import register_user, login_user
 from rest_framework import routers
-from DLOHapi.views import home, oauth, DestinyInventoryItemsView
+from DLOHapi.views import DestinyInventoryItemsView
 
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -32,6 +32,5 @@ urlpatterns = [
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
 
-    # path('oauth2', home, name='oauth2'),
-    # path('oauth2/login', oauth.bungie_login, name='oauth2_login')
+
 ]

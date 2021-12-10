@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from DLOHapi.models import DestinyInventoryItems
+from django.db.models import Q
 
 
 class DestinyInventoryItemsView(ViewSet):
@@ -40,15 +41,19 @@ class DestinyInventoryItemsView(ViewSet):
             Response -- JSON serialized list of games
         """
         # Get all game records from the database
-        items = DestinyInventoryItems.objects.all()
+        items = DestinyInventoryItems.objects.filter(
+            ~Q(item_type_tier_name__contains='Legendary Chest Armor'), ~Q(item_type_tier_name__contains='Legendary Gauntlets'), ~Q(item_type_tier_name__contains='Legendary Helmet'), ~Q(item_type_tier_name__contains='Legendary Leg Armor'))
 
         # Support filtering games by type
         #    http://localhost:8000/games?type=1
         #
         # That URL will retrieve all tabletop games
-        item_name = self.request.query_params.get('name', None)
-        if item_name is not None:
-            items = items.filter(name=item_name)
+
+        # trying to filter by item_name. currently not working
+        item_param = self.request.query_params.get('param', None)
+        if item_param is not None:
+            items = items.filter(Q(name__contains=item_param) | Q(
+                item_type_tier_name__contains=item_param))
 
         serializer = InventoryItemSerializer(
             items, many=True, context={'request': request})
