@@ -1,6 +1,6 @@
 [
   {
-    "model": "DLOHapi.destiny_inv",
+    "model": "DLOHapi.DestinyInventoryItems",
     "pk": 1,
     "fields": {
       "item_hash": 347366834,
@@ -8,7 +8,6 @@
       "name": "Ace of Spades",
       "icon": "/common/destiny2_content/icons/ce5d5c56ffc83fe92b367ec2d4dc1a2a.jpg",
       "has_icon": true,
-      "flavor_text": "\"Folding was never an option.\" —Cayde-6",
       "tier_type": 6,
       "tier_type_name": "Exotic",
       "item_type_name": "Hand Cannon",

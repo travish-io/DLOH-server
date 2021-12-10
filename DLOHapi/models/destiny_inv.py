@@ -7,7 +7,6 @@ class DestinyInventoryItems(models.Model):
     name = models.CharField(max_length=150)
     icon = models.CharField(max_length=250)
     has_icon = models.BooleanField()
-    flavor_text = models.CharField(max_length=250)
     tier_type = models.IntegerField()
     tier_type_name = models.CharField(max_length=25)
     item_type_name = models.CharField(max_length=50)

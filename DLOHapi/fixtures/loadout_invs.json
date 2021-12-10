@@ -3,8 +3,8 @@
     "model": "DLOHapi.loadout_inv",
     "pk": 1,
     "fields": {
-      "item_id": 1,
-      "loadout_id": 1
+      "item": 1,
+      "loadout": 1
     }
   }
 ]
