@@ -1,0 +1,10 @@
+[
+  {
+    "model": "DLOHapi.loadout_inv",
+    "pk": 1,
+    "fields": {
+      "item": 1,
+      "loadout": 1
+    }
+  }
+]

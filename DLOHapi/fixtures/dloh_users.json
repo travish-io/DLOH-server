@@ -1,0 +1,10 @@
+[
+  {
+    "model": "DLOHapi.dloh_user",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "bungie": 4611686018518515849
+    }
+  }
+]

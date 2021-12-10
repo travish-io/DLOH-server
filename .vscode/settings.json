@@ -4,5 +4,13 @@
   "python.linting.pylintArgs": [
     "--load-plugins=pylint_django",
     "--django-settings-module=DLOH.settings"
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "dloh_db",
+      "database": "db.sqlite3"
+    }
   ]
 }
