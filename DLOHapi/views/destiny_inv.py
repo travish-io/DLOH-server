@@ -40,18 +40,18 @@ class DestinyInventoryItemsView(ViewSet):
             Response -- JSON serialized list of games
         """
         # Get all game records from the database
-        games = Game.objects.all()
+        items = DestinyInventoryItems.objects.all()
 
         # Support filtering games by type
         #    http://localhost:8000/games?type=1
         #
         # That URL will retrieve all tabletop games
-        game_type = self.request.query_params.get('type', None)
-        if game_type is not None:
-            games = games.filter(game_type__id=game_type)
+        item_name = self.request.query_params.get('name', None)
+        if item_name is not None:
+            items = items.filter(name=item_name)
 
         serializer = InventoryItemSerializer(
-            games, many=True, context={'request': request})
+            items, many=True, context={'request': request})
         return Response(serializer.data)
 
 
