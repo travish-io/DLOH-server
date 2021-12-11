@@ -1,3 +1,3 @@
-SELECT item_type_tier_name
+SELECT *
 FROM DLOHapi_destinyinventoryitems
-WHERE item_type_tier_name like '%exotic%'
+WHERE name = 'Twisting Echo Grips'
