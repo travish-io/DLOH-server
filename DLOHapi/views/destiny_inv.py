@@ -11,18 +11,18 @@ from django.db.models import Q
 
 
 class DestinyInventoryItemsView(ViewSet):
-    """Destiny Inventory Items"""
+    """Destiny Inventory Items(Armory)"""
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single item
 
         Returns:
-            Response -- JSON serialized game instance
+            Response -- JSON serialized item instance
         """
         try:
             # `pk` is a parameter to this function, and
             # Django parses it from the URL route parameter
-            #   http://localhost:8000/games/2
+            #   http://localhost:8000/Armory/2
             #
             # The `2` at the end of the route becomes `pk`
             item = DestinyInventoryItems.objects.get(pk=pk)
@@ -35,21 +35,22 @@ class DestinyInventoryItemsView(ViewSet):
             return HttpResponseServerError(ex)
 
     def list(self, request):
-        """Handle GET requests to games resource
+        """Handle GET requests to armory resource
 
         Returns:
-            Response -- JSON serialized list of games
+            Response -- JSON serialized list of armory items
         """
-        # Get all game records from the database
+        # filtering unwanted items from the db
         items = DestinyInventoryItems.objects.filter(
             ~Q(item_type_tier_name__contains='Legendary Chest Armor'), ~Q(item_type_tier_name__contains='Legendary Gauntlets'), ~Q(item_type_tier_name__contains='Legendary Helmet'), ~Q(item_type_tier_name__contains='Legendary Leg Armor'))
 
-        # Support filtering games by type
-        #    http://localhost:8000/games?type=1
-        #
-        # That URL will retrieve all tabletop games
+        # trying to find a way to filter duplicates from different seasons
+        items = items.distinct()
 
-        # trying to filter by item_name. currently not working
+        # Setting up query params
+        # http://localhost:8000/Armory?param=Exotic Hand Cannon
+        #
+        # That URL will retrieve all Exotic Hand Cannons
         item_param = self.request.query_params.get('param', None)
         if item_param is not None:
             items = items.filter(Q(name__contains=item_param) | Q(
@@ -61,7 +62,7 @@ class DestinyInventoryItemsView(ViewSet):
 
 
 class InventoryItemSerializer(serializers.ModelSerializer):
-    """JSON serializer for games
+    """JSON serializer for armory items
 
     Arguments:
         serializer type
