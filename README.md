@@ -2,7 +2,7 @@
 Destiny Loadout Helper (DLOH) is a Destiny 2 inventory management and companion app.
 
 DLOH will exist as a native web application. 
-Once users log in and sync their Bungie IDs with their DLOH account they will be able to see the Destiny characters inventory and their account wide "vaut" inventory. 
+Once users log in and sync their Bungie accounts with their DLOH account they will be able to see the Destiny characters inventories and their account wide "vault" inventory. 
 They will be able to select their characters, view equipped items, modify equipped items etc. 
 
 Components: 
