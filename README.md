@@ -9,7 +9,7 @@ Components:
 - Authentication
 -- Create a DLOH account with the Companion App via username and password. 
 
-- Game ID Validation
+- Bungie Account Validation
 -- As a logged in user I am able to authenticate my Bungie ACcount and sync my account data with DLOH via OAuth2.
 
 - Character selection
