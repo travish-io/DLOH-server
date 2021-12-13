@@ -6,51 +6,83 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from DLOHapi.models import DlohUser, Loadout, LoadoutInv
+from DLOHapi.models import DlohUser, Loadout, LoadoutInv, dloh_user
 from django.db.models import Q
 
 
 class LoadoutView(ViewSet):
     """Destiny Loadout Helper"""
 
-    # def create(self, request):
-    #     """Handle POST operations
+    def create(self, request):
+        """Handle POST operations
 
-    #     Returns:
-    #         Response -- JSON serialized game instance
-    #     """
+        Returns:
+            Response -- JSON serialized game instance
+        """
 
-    #     # Uses the token passed in the `Authorization` header
-    #     loadout = Loadout.objects.get(user=request.auth.user)
+        # Uses the token passed in the `Authorization` header
+        dloh_user = DlohUser.objects.get(user=request.auth.user)
 
-    #     # Use the Django ORM to get the record from the database
-    #     # whose `id` is what the client passed as the
-    #     # `gameTypeId` in the body of the request.
-    #     loadout_inv = LoadoutInv.objects.get(pk=request.data["loadoutInvId"])
+        # Try to save the new game to the database, then
+        # serialize the game instance as JSON, and send the
+        # JSON as a response to the client request
+        try:
+            # Create a new Python instance of the Game class
+            # and set its properties from what was sent in the
+            # body of the request from the client.
+            loadout = Loadout.objects.create(
+                name=request.data["name"],
+                dloh_user=dloh_user,
+            )
+            loadout.destiny_items_list.set(request.data['arrayName'])
+            serializer = LoadoutSerializer(
+                loadout, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    #     # Try to save the new game to the database, then
-    #     # serialize the game instance as JSON, and send the
-    #     # JSON as a response to the client request
+        # If anything went wrong, catch the exception and
+        # send a response with a 400 status code to tell the
+        # client that something was wrong with its request data
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
+    # TO DO: refactor this signup method to add items to destiny_items_list for create method
+    #
+    #   @action(methods=['post', 'delete'], detail=True)
+    # def signup(self, request, pk=None):
+    #     """Managing gamers signing up for events"""
+    #     # Django uses the `Authorization` header to determine
+    #     # which user is making the request to sign up
+    #     gamer = Gamer.objects.get(user=request.auth.user)
+
     #     try:
-    #         # Create a new Python instance of the Game class
-    #         # and set its properties from what was sent in the
-    #         # body of the request from the client.
-    #         game = Game.objects.create(
-    #             title=request.data["title"],
-    #             maker=request.data["maker"],
-    #             number_of_players=request.data["numberOfPlayers"],
-    #             skill_level=request.data["skillLevel"],
-    #             gamer=gamer,
-    #             game_type=game_type
+    #         # Handle the case if the client specifies a game
+    #         # that doesn't exist
+    #         event = Event.objects.get(pk=pk)
+    #     except Event.DoesNotExist:
+    #         return Response(
+    #             {'message': 'Event does not exist.'},
+    #             status=status.HTTP_400_BAD_REQUEST
     #         )
-    #         serializer = GameSerializer(game, context={'request': request})
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    #     # If anything went wrong, catch the exception and
-    #     # send a response with a 400 status code to tell the
-    #     # client that something was wrong with its request data
-    #     except ValidationError as ex:
-    #         return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+    #     # A gamer wants to sign up for an event
+    #     if request.method == "POST":
+    #         try:
+    #             # Using the attendees field on the event makes it simple to add a gamer to the event
+    #             # .add(gamer) will insert into the join table a new row the gamer_id and the event_id
+    #             event.attendees.add(gamer)
+    #             return Response({}, status=status.HTTP_201_CREATED)
+    #         except Exception as ex:
+    #             return Response({'message': ex.args[0]})
+
+    #     # User wants to leave a previously joined event
+    #     elif request.method == "DELETE":
+    #         try:
+    #             # The many to many relationship has a .remove method that removes the gamer from the attendees list
+    #             # The method deletes the row in the join table that has the gamer_id and event_id
+    #             event.attendees.remove(gamer)
+    #             return Response(None, status=status.HTTP_204_NO_CONTENT)
+    #         except Exception as ex:
+    #             return Response({'message': ex.args[0]})
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single loadout
