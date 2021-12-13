@@ -1,9 +1,9 @@
 [
   {
-    "model": "DLOHapi.loadout_inv",
+    "model": "DLOHapi.LoadoutInv",
     "pk": 1,
     "fields": {
-      "item": 1,
+      "item": 95925,
       "loadout": 1
     }
   }

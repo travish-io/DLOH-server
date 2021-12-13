@@ -11,3 +11,11 @@ def home(request: HttpRequest) -> JsonResponse:
 
 def bungie_login(request: HttpRequest):
     return redirect(auth_url_bungie)
+
+
+#  api_key = request.query_params.get('api_key', None)
+#     if api_key is not None:
+#         headers = {
+#             'X-API-Key': "85171a1ba12b47c3a02def4c66f45d6f"
+#         }
+#         return Response(headers)

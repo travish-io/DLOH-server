@@ -1,11 +1,11 @@
 [
   {
-    "model": "DLOHapi.loadout",
-    "pk": 1,
+    "model": "DLOHapi.Loadout",
+    "pk": 2,
     "fields": {
       "name": "Loadout 1",
-      "dloh_user": 1,
-      "destiny_items_list": [1]
+      "dloh_user": 4,
+      "destiny_items_list": [95925]
     }
   }
 ]

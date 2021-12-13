@@ -1,10 +1,10 @@
 [
   {
-    "model": "DLOHapi.favorite",
-    "pk": 1,
+    "model": "DLOHapi.Favorite",
+    "pk": 2,
     "fields": {
-      "item_id": 1,
-      "dloh_user": 1
+      "item": 95925,
+      "dloh_user": 4
     }
   }
 ]

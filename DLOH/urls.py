@@ -19,10 +19,12 @@ from django.urls import path
 from DLOHapi.views import register_user, login_user
 from rest_framework import routers
 from DLOHapi.views import DestinyInventoryItemsView
+from DLOHapi.views.loadout import LoadoutView
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'Armory', DestinyInventoryItemsView, 'Armory')
+router.register(r'Armory', DestinyInventoryItemsView, 'Armory'),
+router.register(r'Loadouts', LoadoutView, 'Loadouts')
 
 
 urlpatterns = [
