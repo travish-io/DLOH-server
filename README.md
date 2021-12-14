@@ -15,7 +15,7 @@ Components:
 - Character selection
 -- As a logged in and validated user, I am able to see my Destiny 2 characters and their inventories as well as manipulate which items I have equipped in game.
 
--
+---
 DLOH-server was built using python3 and Django. After cloning the repo run python 3 manage.py makemigrations. Then run python3 manage.py migrate.
 -
 
