@@ -12,5 +12,6 @@
       "name": "dloh_db",
       "database": "db.sqlite3"
     }
-  ]
+  ],
+  "cSpell.ignoreWords": ["dloh"]
 }
