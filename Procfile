@@ -1,1 +1,1 @@
-web: gunicorn dloh.wsgi --log-file -
+web: gunicorn DLOH.wsgi --log-file -
