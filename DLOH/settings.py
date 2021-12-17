@@ -61,6 +61,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     'https://localhost:3000',
     'https://127.0.0.1:3000',
+    'https://dloh.herokuapp.com/'
 )
 
 MIDDLEWARE = [
