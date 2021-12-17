@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         DestinyInventoryItems.objects.all().delete()
         response = requests.get(
-            "https://www.bungie.net/common/destiny2_content/json/en/DestinyInventoryItemLiteDefinition-3b70ff85-b90e-4937-9783-61f01654c4a7.json")
+            "https://www.bungie.net/common/destiny2_content/json/en/DestinyInventoryItemLiteDefinition-a0921ed4-d9c4-4881-ad7a-999cb843d6a3.json")
         json = response.json()
         for item in json:
             display_properties = json[item]['displayProperties']
@@ -32,3 +32,5 @@ class Command(BaseCommand):
                     bucket_hash=inventory['bucketTypeHash'],
                     is_instance_item=inventory['isInstanceItem']
                 )
+
+# working api url:  https://www.bungie.net/common/destiny2_content/json/en/DestinyInventoryItemLiteDefinition-a0921ed4-d9c4-4881-ad7a-999cb843d6a3.json
