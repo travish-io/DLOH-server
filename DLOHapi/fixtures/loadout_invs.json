@@ -3,7 +3,7 @@
     "model": "DLOHapi.LoadoutInv",
     "pk": 1,
     "fields": {
-      "item": 95925,
+      "item": 94949,
       "loadout": 1
     }
   }
