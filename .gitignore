@@ -55,6 +55,10 @@ cover/
 *.mo
 *.pot
 
+# oauth stuff
+cert.pem
+key.pem
+
 # Django stuff:
 *.log
 local_settings.py
