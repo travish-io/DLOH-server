@@ -13,6 +13,7 @@ pylint-django = "*"
 requests = "*"
 gunicorn = "*"
 django-on-heroku = "*"
+django-extensions = "*"
 
 [dev-packages]
 
