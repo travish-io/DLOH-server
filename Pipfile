@@ -14,6 +14,7 @@ requests = "*"
 gunicorn = "*"
 django-on-heroku = "*"
 django-extensions = "*"
+cryptography = "*"
 
 [dev-packages]
 
