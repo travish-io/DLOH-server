@@ -1,7 +1,7 @@
 [
   {
     "model": "DLOHapi.Loadout",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "name": "Loadout 1",
       "dloh_user": 4,

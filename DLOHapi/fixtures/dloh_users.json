@@ -1,10 +1,10 @@
 [
   {
     "model": "DLOHapi.DlohUser",
-    "pk": 4,
+    "pk": 1,
     "fields": {
       "user": 1,
-      "bungie_id": 4611686018518515849
+      "bungie_id": 0
     }
   }
 ]
