@@ -13,26 +13,26 @@ from django.db.models import Q
 class DestinyInventoryItemsView(ViewSet):
     """Destiny Inventory Items(Armory)"""
 
-    def retrieve(self, request, pk=None):
-        """Handle GET requests for single item
+    # def retrieve(self, request, pk=None):
+    #     """Handle GET requests for single item
 
-        Returns:
-            Response -- JSON serialized item instance
-        """
-        try:
-            # `pk` is a parameter to this function, and
-            # Django parses it from the URL route parameter
-            #   http://localhost:8000/Armory/2
-            #
-            # The `2` at the end of the route becomes `pk`
-            item = DestinyInventoryItems.objects.get(pk=pk)
-            serializer = InventoryItemSerializer(
-                item, context={'request': request})
-            return Response(serializer.data)
-        except DestinyInventoryItems.DoesNotExist as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-        except Exception as ex:
-            return HttpResponseServerError(ex)
+    #     Returns:
+    #         Response -- JSON serialized item instance
+    #     """
+    #     try:
+    #         # `pk` is a parameter to this function, and
+    #         # Django parses it from the URL route parameter
+    #         #   http://localhost:8000/Armory/2
+    #         #
+    #         # The `2` at the end of the route becomes `pk`
+    #         item = DestinyInventoryItems.objects.get(pk=pk)
+    #         serializer = InventoryItemSerializer(
+    #             item, context={'request': request})
+    #         return Response(serializer.data)
+    #     except DestinyInventoryItems.DoesNotExist as ex:
+    #         return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+    #     except Exception as ex:
+    #         return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET requests to armory resource
