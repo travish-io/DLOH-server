@@ -42,7 +42,7 @@ class DestinyInventoryItemsView(ViewSet):
         """
         # filtering unwanted items from the db
         items = DestinyInventoryItems.objects.filter(
-            ~Q(item_type_tier_name__contains='Legendary Chest Armor'), ~Q(item_type_tier_name__contains='Legendary Gauntlets'), ~Q(item_type_tier_name__contains='Legendary Helmet'), ~Q(item_type_tier_name__contains='Legendary Leg Armor'))
+            ~Q(item_type_tier_name__contains='Legendary Chest Armor'), ~Q(item_type_tier_name__contains='Legendary Gauntlets'), ~Q(item_type_tier_name__contains='Legendary Helmet'), ~Q(item_type_tier_name__contains='Legendary Leg Armor'), ~Q(item_type_name__contains='Mask'))
 
         # trying to find a way to filter duplicates from different seasons
         items = items.distinct()
