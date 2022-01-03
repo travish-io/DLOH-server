@@ -53,8 +53,8 @@ class DestinyInventoryItemsView(ViewSet):
         # That URL will retrieve all Exotic Hand Cannons
         item_param = self.request.query_params.get('param', None)
         if item_param is not None:
-            items = items.filter(Q(name__contains=item_param) | Q(
-                item_type_tier_name__contains=item_param))
+            items = items.filter(Q(name__icontains=item_param) | Q(
+                item_type_tier_name__icontains=item_param))
 
         serializer = InventoryItemSerializer(
             items, many=True, context={'request': request})
